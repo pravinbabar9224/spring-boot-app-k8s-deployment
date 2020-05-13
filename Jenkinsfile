@@ -16,6 +16,20 @@ pipeline {
          git 'https://github.com/pravinbabar9224/spring-boot-app-k8s-deployment.git'
       }
     }
+	  
+   stage('Sonarqube') {
+    environment {
+        scannerHome = tool 'SonarQube-Server'
+    }
+    steps {
+        withSonarQubeEnv('SonarQube-Server') {
+            sh "${scannerHome}/bin/sonar-scanner"
+        }
+        timeout(time: 10, unit: 'MINUTES') {
+            waitForQualityGate abortPipeline: true
+        }
+      }
+   }
 	
     stage('Package as Image') {
       steps{
