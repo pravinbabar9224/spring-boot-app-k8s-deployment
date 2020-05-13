@@ -13,7 +13,7 @@ pipeline {
     }
     stage('GitHub Checkout') {
       steps {
-         git 'https://github.com/pravinbabar9224/k8s-deployment.git'
+         git 'https://github.com/pravinbabar9224/spring-boot-app-k8s-deployment.git'
       }
     }
 	
