@@ -21,7 +21,7 @@ pipeline {
       steps{
         script {
 
-          dir('/var/lib/jenkins/workspace/kuberntes-cicd/src/'){
+          dir('/root/.jenkins/workspace/spring-boot-app-k8s-deployment'){
              dockerImage = docker.build registry + ":v$BUILD_NUMBER"
          }
         }
