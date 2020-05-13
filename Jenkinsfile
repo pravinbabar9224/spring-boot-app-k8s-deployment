@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "cloudmonster123/docker"
+    registry = "cloudmonster123/spring-boot-app-k8s-deployment"
     registryCredential = 'docker-hub'
     dockerImage = ''
   }
