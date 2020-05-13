@@ -22,7 +22,7 @@ pipeline {
       sh 'mvn clean install sonar:sonar'
       } 
      }
-    }
+    
  
     stage("Quality Gate") {
     timeout(time: 1, unit: 'HOURS') { // Just in case something goes wrong, pipeline will be killed after a timeout
@@ -54,5 +54,5 @@ pipeline {
         }  
       }
     }
- }
- 
+  }
+}
