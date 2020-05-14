@@ -17,6 +17,7 @@ spec:
         image: cloudmonster123/spring-boot-app-k8s-deployment:v17
         imagePullPolicy: Always
         ports:
-        - containerPort: 8080
-     
+        - name: web
+          containerPort: 8080
+          protocol: TCP
 
