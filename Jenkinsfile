@@ -51,7 +51,7 @@ pipeline {
     }
     stage('Deploy to K8s'){
 	  steps{
-	     sshagent([]){
+	     sshagent(['Kops-machine']){
 		     sh "scp -o StrictHostKeyChecking=no sample.yaml ec2-user@13.58.215.7:/home/ec2-user"
 			 script{
 			     try{
