@@ -33,6 +33,7 @@ pipeline {
 		      sh "mvn spring-boot:run"
       }
     }
+  }
 	
     stage('Package as Image') {
       steps{
