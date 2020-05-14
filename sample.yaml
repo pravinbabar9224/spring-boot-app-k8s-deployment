@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: spring-helloworld
-        image: cloudmonster123/spring-boot-app-k8s-deployment:latest
+        image: cloudmonster123/spring-boot-app-k8s-deployment:v17
         imagePullPolicy: Always
         ports:
         - containerPort: 80
