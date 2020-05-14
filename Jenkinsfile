@@ -30,7 +30,7 @@ pipeline {
   stage('Test') {
       steps {
 	      script{
-		      sh "mvn spring-boot:run"
+		      sh "mvn spring-boot:run -Drun.jvmArguments='-Dserver.port=8085"
       }
     }
   }
