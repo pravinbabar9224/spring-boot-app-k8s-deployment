@@ -1,13 +1,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: hello-world
-  annotations:
-    service.beta.kubernetes.io/brightbox-load-balancer-healthcheck-request: /
+  name: spring-helloworld
 spec:
   type: LoadBalancer
   selector:
-    app: hello-world
+    app: spring-helloworld
   ports:
     - name: http
       protocol: TCP
