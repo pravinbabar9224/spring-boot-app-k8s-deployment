@@ -27,6 +27,12 @@ pipeline {
         }
       }
    }
+  stage('Test') {
+      steps {
+	      script{
+		      sh "mvn spring-boot:run"
+      }
+    }
 	
     stage('Package as Image') {
       steps{
