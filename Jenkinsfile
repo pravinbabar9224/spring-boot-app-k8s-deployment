@@ -20,7 +20,7 @@ pipeline {
    stage('Compile and SonarQube Analysis') {
     steps {
         withSonarQubeEnv('SonarQube-Server') {
-            sh 'mvn clean package sonar:sonar'
+            sh 'mvn clean install sonar:sonar'
         }
         timeout(time: 10, unit: 'MINUTES') {
             waitForQualityGate abortPipeline: true
