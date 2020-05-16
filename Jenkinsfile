@@ -40,7 +40,7 @@ pipeline {
         script {
 
           dir('/root/.jenkins/workspace/spring-boot-app-k8s-deployment'){
-             dockerImage = docker.build registry
+             dockerImage = docker.build registry + ":v$BUILD_NUMBER"
          }
         }
       }
@@ -50,9 +50,8 @@ pipeline {
         script {
           dir('/var/lib/jenkins/workspace/kuberntes-cicd/src/'){
                docker.withRegistry( '', registryCredential ) {
-                   // dockerImage.push()
-               app.push("latest")
-          }
+                    dockerImage.push()
+           }
          }
         }  
       }
