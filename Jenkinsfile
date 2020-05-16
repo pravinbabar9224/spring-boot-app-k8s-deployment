@@ -40,7 +40,7 @@ pipeline {
         script {
 
           dir('/root/.jenkins/workspace/spring-boot-app-k8s-deployment'){
-             dockerImage = docker.build registry + ":v$BUILD_NUMBER"
+             dockerImage = docker.build registry
          }
         }
       }
