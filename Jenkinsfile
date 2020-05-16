@@ -58,7 +58,7 @@ pipeline {
     }
     stage('Deploy to K8s'){
 	  steps{
-		  sh "chmod _x changeTag.sh"
+		  sh "chmod +x changeTag.sh"
 		  sh "./changeTag.sh v$BUILD_NUMBER"
 	     sshagent(['Kops-machine']){
 		     sh "scp -o StrictHostKeyChecking=no sample.yaml service.yaml ec2-user@13.58.215.7:/home/ec2-user"
