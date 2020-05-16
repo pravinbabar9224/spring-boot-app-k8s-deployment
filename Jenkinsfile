@@ -27,13 +27,13 @@ pipeline {
         }
       }
    }
-  /*stage('Test') {
+  stage('Unit Testing') {
       steps {
 	      script{
-		      sh "mvn spring-boot:run -Drun.jvmArguments='-Dserver.port=8081'"
+		      sh "mvn test'"
       }
     }
-  }*/
+  }
 	
     stage('Package as Image') {
       steps{
