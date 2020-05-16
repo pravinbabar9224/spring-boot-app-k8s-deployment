@@ -50,7 +50,8 @@ pipeline {
         script {
           dir('/var/lib/jenkins/workspace/kuberntes-cicd/src/'){
                docker.withRegistry( '', registryCredential ) {
-                   dockerImage.push()
+                   // dockerImage.push()
+               app.push("latest")
           }
          }
         }  
