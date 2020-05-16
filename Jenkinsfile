@@ -30,7 +30,7 @@ pipeline {
   stage('Test') {
       steps {
 	      script{
-		      sh "mvn spring-boot:run -Drun.arguments="--server.port=8081""
+		      sh "mvn spring-boot:run -Drun.arguments="--server.port=8081"
       }
     }
   }
