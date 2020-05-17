@@ -18,6 +18,6 @@ public class GreetingController {
     }
     @RequestMapping("/")
     public String defualtgreeting(){
-	return("Hello!!! Welcome to Spring boot application into Kubernates");
+	return("Hello!!! Welcome to Spring boot application into k8s");
 	}
 }
