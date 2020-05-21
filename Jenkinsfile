@@ -22,7 +22,7 @@ agent any
         }
    
 	
-  stage('Sonar Analysis') {
+  /*stage('Sonar Analysis') {
     //steps {
 	 //sonarscan()
        // }
@@ -34,7 +34,7 @@ agent any
             waitForQualityGate abortPipeline: true
         }
       }  
-        }
+        }*/
    
   stage('Unit Testing') {
       steps {
