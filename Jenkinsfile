@@ -1,10 +1,8 @@
+@Library('jenkins-shared-library') _
+
 pipeline {
-  environment {
-    registry = "cloudmonster123/spring-boot-app-k8s-deployment"
-    registryCredential = 'docker-hub'
-    dockerImage = ''
-  }
-  agent any
+  
+agent any
   stages {
     stage('Cleaning Workspace') {
         steps {
@@ -13,64 +11,36 @@ pipeline {
     }
     stage('GitHub Checkout') {
       steps {
-         git 'https://github.com/pravinbabar9224/spring-boot-app-k8s-deployment.git'
+         mycodecheckout(branch: 'master', scmUrl: 'https://github.com/pravinbabar9224/spring-boot-app-k8s-deployment.git')
       }
     }
 	  
-   stage('Compile and SonarQube Analysis') {
+   stage('Compile') {
     steps {
-        withSonarQubeEnv('SonarQube-Server') {
-            sh 'mvn clean install sonar:sonar'
+        mybuild()
         }
-        timeout(time: 10, unit: 'MINUTES') {
-            waitForQualityGate abortPipeline: true
         }
-      }
-   }
+   
+	
+   stage('Sonar Analysis') {
+    steps {
+        sonarscan()
+        }
+        }
+   
   stage('Unit Testing') {
       steps {
-	      script{
-		      sh "mvn test"
-      }
+	      unittest()
     }
   }
 	
     stage('Package as Image') {
       steps{
-        script {
-
-          dir('/root/.jenkins/workspace/spring-boot-app-k8s-deployment'){
-             dockerImage = docker.build registry + ":v$BUILD_NUMBER"
-         }
+        steps {
+        dockerbuild('cloudmonster123', 'spring-boot-app-k8s-deployment', 'spring-boot-app-k8s-deployment')
+         }  
         }
       }
     }
-    stage('Push Image to Docker Registry') {
-      steps{
-        script {
-          dir('/var/lib/jenkins/workspace/kuberntes-cicd/src/'){
-               docker.withRegistry( '', registryCredential ) {
-                    dockerImage.push()
-           }
-         }
-        }  
-      }
-    }
-    stage('Deploy to K8s'){
-	  steps{
-		  sh "chmod +x changeTag.sh"
-		  sh "./changeTag.sh v$BUILD_NUMBER"
-	     sshagent(['Kops-machine']){
-		     sh "scp -o StrictHostKeyChecking=no spring-app-deploy.yml service.yaml ec2-user@13.58.215.7:/home/ec2-user"
-			 script{
-			     try{
-				    sh "ssh ec2-user@13.58.215.7 kubectl apply -f ."
-                             }catch(error){
-				    sh "ssh ec2-user@13.58.215.7 kubectl create -f ."
-                             }
-	   }
-         }
 	}
-    }
-  }
-}
+	}
