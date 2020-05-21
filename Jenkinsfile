@@ -11,7 +11,7 @@ agent any
     }
     stage('GitHub Checkout') {
       steps {
-         mycodecheckout(branch: 'master', scmUrl: 'https://github.com/pravinbabar9224/spring-boot-app-k8s-deployment.git')
+         codecodecheckout(branch: 'master', scmUrl: 'https://github.com/pravinbabar9224/spring-boot-app-k8s-deployment.git')
       }
     }
 	  
