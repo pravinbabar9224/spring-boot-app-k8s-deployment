@@ -37,7 +37,7 @@ agent any
     stage('Package as Image') {
       steps{
         steps {
-        dockerbuild('cloudmonster123', 'spring-boot-app-k8s-deployment', 'spring-boot-app-k8s-deployment')
+        dockerbuild('cloudmonster123', 'spring-boot-app-k8s-deployment')
          }  
         }
       }
