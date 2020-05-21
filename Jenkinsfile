@@ -34,11 +34,16 @@ agent any
     }
   }
 	
-    stage('Package as Image') {
-      steps{
-        dockerbuild('cloudmonster123','spring-boot-app-k8s-deployment')
-    
+stage ('Package as Image') {
+      steps {
+        withCredentials([usernamePassword(
+            credentialsId: "docker-hub",
+            usernameVariable: "Username",
+            passwordVariable: "Password"
+        )]) {
+        dockerbuild('cloudmonster123', 'spring-boot-app-k8s-deployment')
         }
       }
+    }
     }
 }
