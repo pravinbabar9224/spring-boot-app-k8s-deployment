@@ -41,7 +41,7 @@ stage ('Package as Image') {
             usernameVariable: "Username",
             passwordVariable: "Password"
         )]) {
-        dockerbuild('cloudmonster123', 'spring-boot-app-k8s-deployment')
+        dockerbuild('cloudmonster123', 'spring-boot-app-k8s_deployment-new')
         }
       }
     }
