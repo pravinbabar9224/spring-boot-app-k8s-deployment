@@ -46,20 +46,19 @@ stage ('Package as Image') {
         }
       }
     }
-    stage('Deploy to K8s'){
+stage('Deploy to K8s'){
 	  steps{
 		  sh "chmod +x changeTag.sh"
 		  sh "./changeTag.sh v$BUILD_NUMBER"
 	     sshagent(['Kops-machine']){
 		     sh "scp -o StrictHostKeyChecking=no spring-app-deploy.yml service.yaml ec2-user@13.58.215.7:/home/ec2-user"
 			 script{
-			            sh "ssh ec2-user@13.58.215.7 kubectl apply -f spring-app-deploy.yml"
-				    sh "ssh ec2-user@13.58.215.7 kubectl apply -f service.yaml"
-				    sh "ssh ec2-user@13.58.215.7 kubectl get po"
-				    sh "ssh ec2-user@13.58.215.7 kubectl get svc"
-				     
+			     try{
+				    sh "ssh ec2-user@13.58.215.7 kubectl apply -f ."
+                             }catch(error){
+				    sh "ssh ec2-user@13.58.215.7 kubectl create -f ."
                              }
-	     }
+	   }
          }
 	}
     }
