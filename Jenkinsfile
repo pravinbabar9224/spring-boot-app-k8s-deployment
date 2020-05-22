@@ -22,11 +22,11 @@ agent any
         }
    
 	
-  stage('Sonar Analysis') {
-    steps {
-	 sonarscan()
-        }
-      }  
+  //stage('Sonar Analysis') {
+    //steps {
+	// sonarscan()
+        //}
+      //}  
        
    
   stage('Unit Testing') {
