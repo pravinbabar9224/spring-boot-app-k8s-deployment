@@ -22,19 +22,12 @@ agent any
         }
    
 	
-  /*stage('Sonar Analysis') {
-    //steps {
-	 //sonarscan()
-       // }
-      steps {
-        withSonarQubeEnv('SonarQube-Server') {
-            sh 'mvn clean install sonar:sonar'
-        }
-        timeout(time: 10, unit: 'MINUTES') {
-            waitForQualityGate abortPipeline: true
+  stage('Sonar Analysis') {
+    steps {
+	 sonarscan()
         }
       }  
-        }*/
+       
    
   stage('Unit Testing') {
       steps {
