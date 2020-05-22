@@ -54,7 +54,8 @@ stage ('Package as Image') {
 		     sh "scp -o StrictHostKeyChecking=no spring-app-deploy.yml service.yaml ec2-user@13.58.215.7:/home/ec2-user"
 			 script{
 			     try{
-				    sh "ssh ec2-user@13.58.215.7 kubectl apply -f ."
+				    sh "ssh ec2-user@13.58.215.7 kubectl apply -f spring-app-deploy.yml"
+				    sh "ssh ec2-user@13.58.215.7 kubectl apply -f service.yaml"
 				    sh "ssh ec2-user@13.58.215.7 kubectl get po"
 				    sh "ssh ec2-user@13.58.215.7 kubectl get svc"
 				     
