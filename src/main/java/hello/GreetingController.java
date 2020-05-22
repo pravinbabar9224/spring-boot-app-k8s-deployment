@@ -18,6 +18,6 @@ public class GreetingController {
     }
     @RequestMapping("/")
     public String defualtgreeting(){
-	return("Hello!!!");
+	return("Hello!!! Welcome to K8s");
 	}
 }
