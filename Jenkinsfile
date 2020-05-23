@@ -55,6 +55,8 @@ stage('Deploy to K8s'){
 			 script{
 			     try{
 				    sh "ssh ec2-user@13.58.215.7 kubectl apply -f ."
+				    sh "ssh ec2-user@13.58.215.7 kubectl get po"
+				    sh "ssh ec2-user@13.58.215.7 kubectl get svc"
                              }catch(error){
 				    sh "ssh ec2-user@13.58.215.7 kubectl create -f ."
                              }
