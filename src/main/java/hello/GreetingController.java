@@ -18,6 +18,6 @@ public class GreetingController {
     }
     @RequestMapping("/")
     public String defualtgreeting(){
-	return("Hello!!! Welcome to Spring Boot  sglj ljg sdljg ");
+	return("Hello!!! Welcome to Spring Boot in AWS K8s ");
 	}
 }
