@@ -51,9 +51,10 @@ stage('Commit to CD Repo'){
                     sh "git clone https://github.com/pravinbabar9224/spring-boot-app-k8s-deployment-CD.git"
 		    sh "chmod +x changeTag.sh"
 		    sh "./changeTag.sh v$BUILD_NUMBER"
-			sh "git status"
+		    sh "cp spring-app-deploy.yml spring-boot-app-k8s-deployment-CD/"
+			sh "cd spring-boot-app-k8s-deployment-CD"
 			sh "git add *"
-			sh "git commit 'new commit'"
+			sh "git commit -m 'new commit'"
 			sh "git remote add origin https://github.com/pravinbabar9224/spring-boot-app-k8s-deployment-CD.git"
 			sh "git push origin master -u cloudmonster123 -p Aai@123@Pappa"
 	      
