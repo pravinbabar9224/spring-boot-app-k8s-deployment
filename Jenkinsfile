@@ -61,8 +61,5 @@ stage('Commit to CD Repo'){
     }
 	
     }
-	}
-    }
-	
-    }
+  }
 }
