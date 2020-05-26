@@ -48,7 +48,7 @@ stage ('Package as Image') {
     }
 stage('Commit to CD Repo'){
 	  steps{
-            codecodecheckout(branch: 'master', scmUrl: 'https://github.com/pravinbabar9224/spring-boot-app-k8s-deployment-CD.git'){
+                    sh "git clone https://github.com/pravinbabar9224/spring-boot-app-k8s-deployment-CD.git"
 		    sh "chmod +x changeTag.sh"
 		    sh "./changeTag.sh v$BUILD_NUMBER"
 			sh "git status"
