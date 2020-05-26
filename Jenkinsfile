@@ -53,7 +53,7 @@ stage('Commit to CD Repo'){
 		    sh "./changeTag.sh v$BUILD_NUMBER"
 			sh "git status"
 			sh "git add *"
-			sh "git commit "new commit"
+			sh "git commit 'new commit'"
 			sh "git remote add origin https://github.com/pravinbabar9224/spring-boot-app-k8s-deployment-CD.git"
 			sh "git push origin master -u cloudmonster123 -p Aai@123@Pappa"
 	      
