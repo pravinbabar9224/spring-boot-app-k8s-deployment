@@ -55,7 +55,11 @@ stage('Commit to CD Repo'){
 			sh "cd spring-boot-app-k8s-deployment-CD/manifest/"
 			sh "git add sample1.yaml"
 			sh "git commit -m 'new commit'"
-		  sshagent(['git-new']) {
+		  withCredentials([usernamePassword(
+                        credentialsId: "git-new",
+                      usernameVariable: "Username",
+                      passwordVariable: "Password"
+                      )]) {
                         sh "git push origin master"
                        }
 			
