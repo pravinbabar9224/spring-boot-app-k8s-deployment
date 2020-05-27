@@ -47,10 +47,10 @@ stage ('Package as Image') {
       }
     }
 stage('Commit to CD Repo'){
-	  steps{
-                    sh "git clone https://github.com/pravinbabar9224/spring-boot-app-k8s-deployment-CD.git"
+	  steps{                   
 		    sh "chmod +x changeTag.sh"
 		    sh "./changeTag.sh v$BUILD_NUMBER"
+		    sh "git clone https://github.com/pravinbabar9224/spring-boot-app-k8s-deployment-CD.git"
 		    sh "cp sample1.yml spring-boot-app-k8s-deployment-CD/manifest/"
 			sh "cd spring-boot-app-k8s-deployment-CD/manifest/"
 			sh "git add *"
