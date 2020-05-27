@@ -1,2 +1,2 @@
 #!/bin/bash
-sed "s/tagVersion/$1/g" sample.yaml > spring-app-deploy.yml
+sed "s/tagVersion/$1/g" sample.yaml > sample.yaml
