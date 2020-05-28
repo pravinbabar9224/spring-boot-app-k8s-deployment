@@ -1,9 +1,22 @@
 @Library('jenkins-shared-library') _
 
+def loadValuesYaml(){
+def valuesYaml = readYaml (file: 'input.yaml')
+return valuesYaml;
+}
+
 pipeline {
   
 agent any
   stages {
+        stage ('deployment'){ 
+               steps { 
+                     script {
+
+                          valuesYaml = loadValuesYaml()
+}
+ }
+}
     stage('Cleaning Workspace') {
         steps {
           deleteDir()
@@ -11,7 +24,7 @@ agent any
     }
     stage('GitHub Checkout') {
       steps {
-         codecodecheckout(branch: 'master', scmUrl: 'https://github.com/pravinbabar9224/spring-boot-app-k8s-deployment.git')
+         codecodecheckout(branch:valuesYaml.Gitdetails.branch , scmUrl:valuesYaml.Gitdetails.repo)
       }
     }
 	  
@@ -38,11 +51,11 @@ agent any
 stage ('Package as Image') {
       steps {
         withCredentials([usernamePassword(
-            credentialsId: "docker-hub",
+            credentialsId:valuesYaml.CredId.dockercred,
             usernameVariable: "Username",
             passwordVariable: "Password"
         )]) {
-        dockerbuild('cloudmonster123', 'spring-boot-app-k8s_deployment-new')
+        dockerbuild(valuesYaml.Dockerdetails.dockeruser,valuesYaml.Dockerdetails.dockerrepo)
         }
       }
     }
