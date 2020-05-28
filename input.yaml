@@ -1,0 +1,8 @@
+Gitdetails:
+branch: 'master'
+repo: 'https://github.com/pravinbabar9224/spring-boot-app-k8s-deployment.git'
+Dockerdetails:
+dockeruser: 'cloudmonster123'
+dockerrepo: 'spring-boot-app-k8s_deployment-new'
+CredId:
+dockercred: 'docker-hub'
