@@ -46,7 +46,7 @@ stage ('Package as Image') {
         }
       }
     }
-stage('Commit to CD Repo'){
+/*stage('Commit to CD Repo'){
 	  steps{                   
 		    sh "chmod +x changeTag.sh"
 		    sh "./changeTag.sh v$BUILD_NUMBER"
@@ -65,7 +65,7 @@ stage('Commit to CD Repo'){
 			
 	      
 	}
-    }
+    }*/
 	
     }
   }
