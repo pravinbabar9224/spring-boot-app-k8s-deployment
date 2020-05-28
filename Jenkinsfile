@@ -24,7 +24,7 @@ agent any
     }
     stage('GitHub Checkout') {
       steps {
-         codecodecheckout(branch:valuesYaml.Gitdetails.branch, scmUrl:valuesYaml.Gitdetails.repo)
+         codecodecheckout(branch: valuesYaml.Gitdetails.branch, scmUrl: valuesYaml.Gitdetails.repo)
       }
     }
 	  
