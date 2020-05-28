@@ -18,6 +18,6 @@ public class GreetingController {
     }
     @RequestMapping("/")
     public String defualtgreeting(){
-	return("Hello!!! Welcome to Spring Boot in Docker");
+	return("Hello!!! Welcome to Spring Boot in Docker Container");
 	}
 }
